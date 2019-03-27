@@ -19,15 +19,17 @@
         ></comment>
       </li>
     </ul>
+    <add-comment :postID="post.id"></add-comment>
   </div>
 </template>
 
 <script>
+  import AddComment from './AddComment'
   import Comment from './Comment'
 
   export default {
     name: 'view-post',
-    components: { Comment },
+    components: { AddComment, Comment },
     data() {
       return {
         post: {}

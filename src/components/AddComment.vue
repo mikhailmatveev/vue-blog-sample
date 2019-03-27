@@ -20,9 +20,9 @@
 <script>
   export default {
     name: 'add-comment',
+    props: ['postID'],
     data() {
       return {
-        postID: 0,
         author: '',
         content: ''
       }
@@ -31,10 +31,11 @@
       addComment() {
         this.$store.dispatch('ADD_COMMENT', {
           postID: this.postID,
-          author: this.author,
-          content: this.content
+          data: {
+            author: this.author,
+            content: this.content
+          }
         })
-        postID = 0
         this.author = ''
         this.content = ''
       }
