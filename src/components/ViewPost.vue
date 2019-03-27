@@ -1,5 +1,4 @@
 <template>
-  <div class="container">
     <div class="content">
       <header>
         <h1>{{ post.title }}</h1>
@@ -10,17 +9,16 @@
       <footer>
         <span class="icon user"></span>{{ post.author }}
       </footer>
+      <ul class="comments">
+        <li v-for="comment in post.comments">
+          <comment
+            :author="comment.author"
+            :comment="comment.content"
+          ></comment>
+        </li>
+      </ul>
+      <add-comment :postID="post.id"></add-comment>
     </div>
-    <ul class="comments">
-      <li v-for="comment in post.comments">
-        <comment
-          :author="comment.author"
-          :comment="comment.content"
-        ></comment>
-      </li>
-    </ul>
-    <add-comment :postID="post.id"></add-comment>
-  </div>
 </template>
 
 <script>
