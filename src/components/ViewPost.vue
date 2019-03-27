@@ -1,24 +1,24 @@
 <template>
-    <div class="content">
-      <header>
-        <h1>{{ post.title }}</h1>
-      </header>
-      <div v-html="post.content" class="body">
-        {{ post.content }}
-      </div>
-      <footer>
-        <span class="icon user"></span>{{ post.author }}
-      </footer>
-      <ul class="comments">
-        <li v-for="comment in post.comments">
-          <comment
-            :author="comment.author"
-            :comment="comment.content"
-          ></comment>
-        </li>
-      </ul>
-      <add-comment :postID="post.id"></add-comment>
+  <div class="content">
+    <header>
+      <h1>{{ post.title }}</h1>
+    </header>
+    <div v-html="post.content" class="body">
+      {{ post.content }}
     </div>
+    <footer>
+      <span class="icon user"></span>{{ post.author }}
+    </footer>
+    <ul class="comments">
+      <li v-for="comment in post.comments">
+        <comment
+          :author="comment.author"
+          :comment="comment.content"
+        ></comment>
+      </li>
+    </ul>
+    <add-comment :postID="post.id"></add-comment>
+  </div>
 </template>
 
 <script>
