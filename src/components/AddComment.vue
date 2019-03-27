@@ -1,0 +1,71 @@
+<template>
+  <div class="content">
+    <textarea v-model="content"
+              class="post-content"
+              placeholder="Контент"
+    ></textarea>
+    <input v-model="author"
+           class="post-author"
+           placeholder="Как Вас зовут?"
+    />
+    <div class="button-wrapper">
+      <button v-on:click.prevent="addComment"
+              class="publish">
+        Добавить
+      </button>
+    </div>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'add-comment',
+    data() {
+      return {
+        postID: 0,
+        author: '',
+        content: ''
+      }
+    },
+    methods: {
+      addComment() {
+        this.$store.dispatch('ADD_COMMENT', {
+          postID: this.postID,
+          author: this.author,
+          content: this.content
+        })
+        postID = 0
+        this.author = ''
+        this.content = ''
+      }
+    }
+  }
+</script>
+
+<style lang="scss" scoped>
+  h1 {
+    margin:        0;
+    margin-bottom: 12px;
+    font-size:     20px;
+  }
+
+  input {
+    margin-bottom: 4px;
+    width:         100%;
+  }
+
+  textarea {
+    width: 100%;
+  }
+
+  .content {
+    padding:       12px;
+    margin-bottom: 20px;
+    border:        1px #ddd solid;
+  }
+
+  .button-wrapper {
+    margin:     6px 0;
+    text-align: right;
+  }
+</style>
