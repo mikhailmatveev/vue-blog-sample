@@ -54,11 +54,4 @@
       border: 0;
     }
   }
-
-  .comments {
-    margin: 0;
-    .content {
-      padding: 0;
-    }
-  }
 </style>
