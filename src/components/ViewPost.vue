@@ -53,5 +53,10 @@
     footer {
       border: 0;
     }
+    .comments {
+      li {
+        margin-bottom: 0;
+      }
+    }
   }
 </style>
