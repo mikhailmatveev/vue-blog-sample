@@ -11,6 +11,13 @@
     </footer>
     <ul class="comments">
       <li v-for="comment in post.comments">
+        <span
+          v-on:click="removeComment({
+            postID: post.id,
+            commentID: comment.id
+          })"
+          class="icon times"
+        ></span>
         <comment
           :author="comment.author"
           :comment="comment.content"
@@ -40,6 +47,11 @@
       })
       if (post.length > 0) {
         this.post = post[0]
+      }
+    },
+    methods: {
+      removeComment(payload) {
+        this.$store.dispatch('REMOVE_COMMENT', payload)
       }
     }
   }

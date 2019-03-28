@@ -1,3 +1,4 @@
+import { isEmpty, find } from 'lodash'
 import Storage from './Storage'
 
 const state = {
@@ -42,6 +43,35 @@ const mutations = {
     // Записываем новые данные в localStorage
     Storage.write(state.posts)
   },
+  REMOVE_COMMENT: (state, payload) => {
+    // Фильтр по ID записи
+    const post = find(state.posts, {
+      id: payload.postID
+    })
+    if (!isEmpty(post)) {
+      const comment = find(post.comments, {
+        id: payload.commentID
+      })
+      if (!isEmpty(comment)) {
+        const index = post.comments.indexOf(comment)
+        if (index !== -1) {
+          // Удалить комментарий по его индексу
+          post.comments.splice(index, 1)
+        }
+        // Пересчитать ID в массиве post.comments
+        if (post.comments.length > 0) {
+          for (let i = 0; i < post.comments.length; ++i) {
+            const item = post.comments[i]
+            if (item.id > payload.commentID) {
+              item.id--
+            }
+          }
+        }
+        // Записываем новые данные в localStorage
+        Storage.write(state.posts)
+      }
+    }
+  },
   UPDATE_POSTS: (state, payload) => {
     state.posts = payload
     // Записываем новые данные в localStorage
@@ -55,6 +85,9 @@ const actions = {
   },
   ADD_POST: (state, payload) => {
     state.commit('ADD_POST', payload)
+  },
+  REMOVE_COMMENT: (state, payload) => {
+    state.commit('REMOVE_COMMENT', payload)
   },
   UPDATE_POSTS: (state, payload) => {
     // Записываем в localStorage
