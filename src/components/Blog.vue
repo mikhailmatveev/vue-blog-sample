@@ -58,3 +58,22 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+  .content {
+    li {
+      position: relative;
+      .remove {
+        position: absolute;
+        top:      12px;
+        right:    12px;
+        margin:   0;
+        opacity:  .5;
+        &:hover {
+          cursor:  pointer;
+          opacity: 1;
+        }
+      }
+    }
+  }
+</style>
