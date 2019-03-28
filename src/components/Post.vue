@@ -13,7 +13,7 @@
     <footer>
       <ul>
         <li><span class="icon user"></span>{{ author }}</li>
-        <li><span class="icon comment"></span>{{ comments.length }}</li>
+        <li v-if="comments.length > 0"><span class="icon comment"></span>{{ comments.length }}</li>
       </ul>
     </footer>
   </div>
