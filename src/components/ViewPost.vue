@@ -16,7 +16,7 @@
             postID: post.id,
             commentID: comment.id
           })"
-          class="icon times"
+          class="icon times remove"
         ></span>
         <comment
           :author="comment.author"
@@ -67,7 +67,19 @@
     }
     .comments {
       li {
+        position: relative;
         margin-bottom: 0;
+        .remove {
+          position: absolute;
+          top: 8px;
+          right: 8px;
+          margin: 0;
+          opacity: .5;
+          &:hover {
+            cursor: pointer;
+            opacity: 1;
+          }
+        }
       }
     }
   }
