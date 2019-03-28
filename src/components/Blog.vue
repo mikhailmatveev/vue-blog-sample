@@ -3,6 +3,10 @@
     <add-post></add-post>
     <ul>
       <li v-for="post in getPosts">
+        <span
+          v-on:click="removePost(post.id)"
+          class="icon times remove"
+        ></span>
         <post
           :id="post.id"
           :author="post.author"
@@ -46,6 +50,11 @@
           })
         }
       })
+    },
+    methods: {
+      removePost(payload) {
+        this.$store.dispatch('REMOVE_POST', payload)
+      }
     }
   }
 </script>

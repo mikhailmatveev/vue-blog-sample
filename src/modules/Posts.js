@@ -72,6 +72,30 @@ const mutations = {
       }
     }
   },
+  REMOVE_POST: (state, payload) => {
+    // Фильтр по ID записи
+    const post = find(state.posts, {
+      id: payload
+    })
+    if (!isEmpty(post)) {
+      const index = state.posts.indexOf(post)
+      if (index !== -1) {
+        // Удалить запись по её индексу
+        state.posts.splice(index, 1)
+      }
+      // Пересчитать ID в массиве state.posts
+      if (state.posts.length > 0) {
+        for (let i = 0; i < state.posts.length; ++i) {
+          const item = state.posts[i]
+          if (item.id > payload) {
+            item.id--
+          }
+        }
+      }
+      // Записываем новые данные в localStorage
+      Storage.write(state.posts)
+    }
+  },
   UPDATE_POSTS: (state, payload) => {
     state.posts = payload
     // Записываем новые данные в localStorage
@@ -88,6 +112,9 @@ const actions = {
   },
   REMOVE_COMMENT: (state, payload) => {
     state.commit('REMOVE_COMMENT', payload)
+  },
+  REMOVE_POST: (state, payload) => {
+    state.commit('REMOVE_POST', payload)
   },
   UPDATE_POSTS: (state, payload) => {
     // Записываем в localStorage
