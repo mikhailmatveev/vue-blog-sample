@@ -78,6 +78,9 @@
     &.comment {
       background: url("/static/icons/icon-comment.svg") 0 0 no-repeat;
     }
+    &.times {
+      background: url("/static/icons/icon-times.svg") 0 0 no-repeat;
+    }
     &.user {
       background: url("/static/icons/icon-user.svg") 0 0 no-repeat;
     }
