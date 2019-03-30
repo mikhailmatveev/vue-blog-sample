@@ -8,7 +8,6 @@ const state = {
 const getters = {
   GET_POSTS: (state, payload) => {
     state.posts = Storage.read()
-    console.log(typeof state.posts)
     return state.posts
   },
   IS_EMPTY: (state, payload) => {
