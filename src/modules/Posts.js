@@ -37,7 +37,7 @@ const mutations = {
   },
   ADD_POST: (state, payload) => {
     // Присваиваем ID записи
-    payload.id = ++Storage.uid
+    payload.id = state.posts.length + 1
     // Добавляем в хранилище
     state.posts.push(payload)
     // Записываем новые данные в localStorage

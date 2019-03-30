@@ -4,7 +4,6 @@ export default {
   // Читает данные из localStorage
   read: function () {
     var items = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
-    this.uid = items.length
     return items
   },
   // Записывает данные в localStorage
