@@ -42,14 +42,14 @@
       }
     },
     created() {
-      this.$http.get('/static/api/blog.json').then(response => {
-        // Грузим из .json только если в localStorage нет записей
-        if (this.$store.getters.IS_EMPTY) {
-          this.$store.dispatch('UPDATE_POSTS', response.body).then(() => {
-            console.log('Loaded from Blog.json')
-          })
-        }
-      })
+      // Грузим из .json только если в localStorage нет записей
+      if (this.$store.getters.IS_EMPTY) {
+        this.$http.get('/static/api/blog.json').then(response => {
+          console.log('Loaded from Blog.json')
+          // Сохраняем записи
+          this.$store.dispatch('UPDATE_POSTS', response.body)
+        })
+      }
     },
     methods: {
       removePost(payload) {
