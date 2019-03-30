@@ -14,7 +14,7 @@
     </div>
     <div class="button-wrapper">
       <button v-on:click.prevent="addComment"
-              class="publish">
+              class="btn btn-primary publish">
         Добавить
       </button>
     </div>
@@ -48,6 +48,7 @@
 </script>
 
 <style lang="scss" scoped>
+  @import "../scss/buttons/buttons";
   @import "../scss/inputs/inputs";
 
   h1 {

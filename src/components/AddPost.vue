@@ -21,7 +21,7 @@
     </div>
     <div class="button-wrapper">
       <button v-on:click.prevent="addPost"
-              class="publish">
+              class="btn btn-primary publish">
         Опубликовать
       </button>
     </div>
@@ -55,6 +55,7 @@
 </script>
 
 <style lang="scss" scoped>
+  @import "../scss/buttons/buttons";
   @import "../scss/inputs/inputs";
 
   h1 {
