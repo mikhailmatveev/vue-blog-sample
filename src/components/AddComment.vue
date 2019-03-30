@@ -73,7 +73,7 @@
   }
 
   .button-wrapper {
-    margin:     6px 0;
+    padding:    6px 0;
     text-align: right;
   }
 </style>
