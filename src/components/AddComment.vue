@@ -13,7 +13,7 @@
       />
     </div>
     <div class="button-wrapper">
-      <button v-on:click.prevent="addComment"
+      <button :disabled="!isValid" v-on:click.prevent="addComment"
               class="btn btn-primary publish">
         Добавить
       </button>
@@ -29,6 +29,11 @@
       return {
         author: '',
         content: ''
+      }
+    },
+    computed: {
+      isValid() {
+        return this.author && this.content
       }
     },
     methods: {
