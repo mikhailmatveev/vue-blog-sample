@@ -1,0 +1,37 @@
+$padding-horizontal: 12px !default;
+$padding-vertical: 6px !default;
+$font-size: 14px !default;
+$font-weight: normal !default;
+$line-height: 1.428571429 !default; // 20/14
+$line-height-computed: floor(($font-size * $line-height)) !default; // ~20px
+$input-height: ($line-height-computed + ($padding-vertical * 2) + 2) !default;
+$color: #333 !default;
+$background: #fff !default;
+$border: #ccc !default;
+$border-radius: 4px !default;
+
+$brand-primary: #428bca !default;
+$brand-success: #5cb85c !default;
+$brand-info: #5bc0de !default;
+$brand-warning: #f0ad4e !default;
+$brand-danger: #d9534f !default;
+
+$color-primary: #fff !default;
+$background-primary: darken($brand-primary, 6.5%) !default;
+$border-primary: darken($background-primary, 5%) !default;
+
+$color-success: #fff !default;
+$background-success: darken($brand-success, 6.5%) !default;
+$border-success: darken($background-success, 5%) !default;
+
+$color-info: #fff !default;
+$background-info: darken($brand-info, 6.5%) !default;
+$border-info: darken($background-info, 5%) !default;
+
+$color-warning: #fff !default;
+$background-warning: darken($brand-warning, 6.5%) !default;
+$border-warning: darken($background-warning, 5%) !default;
+
+$color-danger: #fff !default;
+$background-danger: darken($brand-danger, 6.5%) !default;
+$border-danger: darken($background-danger, 5%) !default;
