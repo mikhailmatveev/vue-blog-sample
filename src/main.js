@@ -4,6 +4,7 @@ import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
 import App from '@/App'
 import Posts from '@/modules/Posts'
+import Settings from '@/modules/Settings'
 
 Vue.use(Vuex)
 Vue.use(VueResource)
@@ -49,7 +50,8 @@ const router = new VueRouter({
 
 const store = new Vuex.Store({
   modules: {
-    Posts
+    Posts,
+    Settings
   }
 });
 
