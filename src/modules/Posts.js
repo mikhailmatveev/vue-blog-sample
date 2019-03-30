@@ -1,5 +1,5 @@
 import { isEmpty, find } from 'lodash'
-import Storage from './Storage'
+import Storage from '../utils/Storage'
 
 const state = {
   posts: []
