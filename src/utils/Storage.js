@@ -1,13 +1,20 @@
-const STORAGE_KEY = 'blog-vuejs-2.0'
+import { isArray, isObject } from 'lodash'
 
 export default {
   // Читает данные из localStorage
-  read: function () {
-    var items = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
-    return items
+  read: function (key) {
+    const item = localStorage.getItem(key)
+    if (isArray(item) || isObject(item)) {
+      return JSON.parse(item)
+    }
+    return item
   },
   // Записывает данные в localStorage
-  write: function (items) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(items))
+  write: function (key, items) {
+    if (isArray(items) || isObject(items)) {
+      localStorage.setItem(key, JSON.stringify(items))
+    } else {
+      localStorage.setItem(key, items)
+    }
   }
 }
