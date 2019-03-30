@@ -8,10 +8,10 @@
       />
     </div>
     <div class="form-group">
-    <textarea v-model="content"
-              class="post-content input"
-              placeholder="Контент"
-    ></textarea>
+      <textarea v-model="content"
+                class="post-content input"
+                placeholder="Контент"
+      ></textarea>
     </div>
     <div class="form-group">
       <input v-model="author"
