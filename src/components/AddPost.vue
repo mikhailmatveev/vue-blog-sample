@@ -1,18 +1,24 @@
 <template>
   <div class="content">
     <h1>Новая запись</h1>
-    <input v-model="title"
-           class="post-title"
-           placeholder="Заголовок"
-    />
+    <div class="form-group">
+      <input v-model="title"
+             class="post-title input"
+             placeholder="Заголовок"
+      />
+    </div>
+    <div class="form-group">
     <textarea v-model="content"
-              class="post-content"
+              class="post-content input"
               placeholder="Контент"
     ></textarea>
-    <input v-model="author"
-           class="post-author"
-           placeholder="Как Вас зовут?"
-    />
+    </div>
+    <div class="form-group">
+      <input v-model="author"
+             class="post-author input"
+             placeholder="Как Вас зовут?"
+      />
+    </div>
     <div class="button-wrapper">
       <button v-on:click.prevent="addPost"
               class="publish">
@@ -49,6 +55,8 @@
 </script>
 
 <style lang="scss" scoped>
+  @import "../scss/inputs/inputs";
+
   h1 {
     margin:        0;
     margin-bottom: 12px;

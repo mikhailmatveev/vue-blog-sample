@@ -1,0 +1,14 @@
+$padding-horizontal: 12px !default;
+$padding-vertical: 6px !default;
+$font-size: 14px !default;
+$line-height: 1.428571429 !default; // 20/14
+$line-height-computed: floor(($font-size * $line-height)) !default; // ~20px
+$input-height: ($line-height-computed + ($padding-vertical * 2) + 2) !default;
+$color: #808080 !default;
+$background-color: #fff !default;
+$background-color-disabled: lighten($background-color, 93.5) !default;
+$border: #ccc !default;
+$border-focus: #66afe9 !default;
+$border-radius: 4px !default;
+$placeholder-color: #999 !default;
+$form-group-margin-bottom: 4px !default;
