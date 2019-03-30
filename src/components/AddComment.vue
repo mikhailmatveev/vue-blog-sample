@@ -1,13 +1,17 @@
 <template>
   <div class="content">
-    <textarea v-model="content"
-              class="post-content"
-              placeholder="Контент"
-    ></textarea>
-    <input v-model="author"
-           class="post-author"
-           placeholder="Как Вас зовут?"
-    />
+    <div class="form-control">
+      <textarea v-model="content"
+                class="post-content input"
+                placeholder="Контент"
+      ></textarea>
+    </div>
+    <div class="form-control">
+      <input v-model="author"
+             class="post-author input"
+             placeholder="Как Вас зовут?"
+      />
+    </div>
     <div class="button-wrapper">
       <button v-on:click.prevent="addComment"
               class="publish">
