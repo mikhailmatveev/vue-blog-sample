@@ -1,12 +1,12 @@
 <template>
   <div class="content">
-    <div class="form-control">
+    <div class="form-group">
       <textarea v-model="content"
                 class="post-content input"
                 placeholder="Контент"
       ></textarea>
     </div>
-    <div class="form-control">
+    <div class="form-group">
       <input v-model="author"
              class="post-author input"
              placeholder="Как Вас зовут?"
@@ -48,6 +48,8 @@
 </script>
 
 <style lang="scss" scoped>
+  @import "../scss/inputs/inputs";
+
   h1 {
     margin:        0;
     margin-bottom: 12px;
