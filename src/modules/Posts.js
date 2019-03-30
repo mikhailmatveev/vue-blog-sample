@@ -1,5 +1,5 @@
 import { isEmpty, find } from 'lodash'
-import Storage from '../utils/Storage'
+import Storage from '../utils/PostsStorage'
 
 const state = {
   posts: []
@@ -8,6 +8,7 @@ const state = {
 const getters = {
   GET_POSTS: (state, payload) => {
     state.posts = Storage.read()
+    console.log(typeof state.posts)
     return state.posts
   },
   IS_EMPTY: (state, payload) => {
