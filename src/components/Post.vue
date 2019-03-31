@@ -1,6 +1,6 @@
 <template xmlns="http://www.w3.org/1999/html">
   <div class="content">
-    <header>
+    <header v-if="!editModeEnabled">
       <h1>
         <router-link :to="{ path: '/post/' + id }">
           {{ title }}
@@ -11,14 +11,41 @@
         class="icon times remove"
       ></span>
       <span
-        v-on:click="editPost(id)"
+        v-on:click="editPost()"
         class="icon edit"
       ></span>
     </header>
-    <div v-html="truncate(content, 255)" class="body">
+    <div v-if="!editModeEnabled" v-html="truncate(content, 255)" class="body">
       {{ content }}
     </div>
-    <footer>
+    <div v-else class="body edit-post">
+      <div class="form-group">
+        <input v-model="post.title"
+               class="post-title input"
+               placeholder="Заголовок"
+        />
+      </div>
+      <div class="form-group">
+        <textarea v-model="post.content"
+                  class="post-content input"
+                  placeholder="Контент"
+                  rows="5"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <input v-model="post.author"
+               class="post-author input"
+               placeholder="Как Вас зовут?"
+        />
+      </div>
+      <div class="button-wrapper">
+        <button :disabled="!isValid" v-on:click.prevent="savePost"
+                class="btn btn-primary save">
+          Сохранить
+        </button>
+      </div>
+    </div>
+    <footer v-if="!editModeEnabled">
       <ul>
         <li><span class="icon user"></span>{{ author }}</li>
         <li v-if="comments.length > 0"><span class="icon comment"></span>{{ comments.length }}</li>
@@ -31,9 +58,31 @@
   export default {
     name: 'post',
     props: ['id', 'title', 'content', 'author', 'comments'],
+    data() {
+      return {
+        post: {
+          title: this.title,
+          content: this.content,
+          author: this.author
+        },
+        editModeEnabled: false
+      }
+    },
+    computed: {
+      isValid() {
+        return this.title && this.content && this.author
+      }
+    },
     methods: {
-      editPost(id) {
-        console.log(id)
+      editPost() {
+        if (!this.editModeEnabled) {
+          this.editModeEnabled = true
+        }
+      },
+      savePost() {
+        if (this.editModeEnabled === true) {
+          this.editModeEnabled = false
+        }
       },
       removePost(payload) {
         this.$store.dispatch('REMOVE_POST', payload)
@@ -49,6 +98,9 @@
 </script>
 
 <style lang="scss" scoped>
+  @import "../scss/inputs/inputs";
+  @import "../scss/buttons/buttons";
+
   .content {
     header, .body, footer {
       padding:      12px;
@@ -79,6 +131,16 @@
       }
       .remove {
         right: 12px;
+      }
+    }
+    .body {
+      &.edit-post {
+        border-top: 1px #ddd solid;
+        border-bottom: 1px #ddd solid;
+        .button-wrapper {
+          padding:    6px 0;
+          text-align: right;
+        }
       }
     }
     footer {
