@@ -15,8 +15,8 @@
         class="icon edit"
       ></span>
     </header>
-    <div v-html="content" class="body">
-      {{ content | truncate(255) }}
+    <div v-html="truncate(content, 255)" class="body">
+      {{ content }}
     </div>
     <footer>
       <ul>
@@ -31,20 +31,18 @@
   export default {
     name: 'post',
     props: ['id', 'title', 'content', 'author', 'comments'],
-    filters: {
-      truncate(value, limit) {
-        if (value.length > limit) {
-          value = value.substring(0, limit - 3) + '...';
-        }
-        return value
-      }
-    },
     methods: {
       editPost(id) {
         console.log(id)
       },
       removePost(payload) {
         this.$store.dispatch('REMOVE_POST', payload)
+      },
+      truncate(value, limit) {
+        if (value.length > limit) {
+          value = value.substring(0, limit - 3) + '...';
+        }
+        return value
       }
     }
   }
