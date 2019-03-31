@@ -3,15 +3,11 @@
     <add-post></add-post>
     <ul>
       <li v-for="post in getPosts">
-        <span
-          v-on:click="removePost(post.id)"
-          class="icon times remove"
-        ></span>
         <post
           :id="post.id"
           :author="post.author"
           :title="post.title"
-          :content="post.content | truncate(255)"
+          :content="post.content"
           :comments="post.comments"
         ></post>
       </li>
@@ -38,14 +34,6 @@
         isEmpty: 'IS_EMPTY'
       })
     },
-    filters: {
-      truncate(value, limit) {
-        if (value.length > limit) {
-          value = value.substring(0, limit - 3) + '...';
-        }
-        return value
-      }
-    },
     created() {
       // Грузим настройки
       this.$store.dispatch('GET_SETTINGS').then(() => {
@@ -66,30 +54,6 @@
           }
         }
       })
-    },
-    methods: {
-      removePost(payload) {
-        this.$store.dispatch('REMOVE_POST', payload)
-      }
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  .content {
-    li {
-      position: relative;
-      .remove {
-        position: absolute;
-        top:      12px;
-        right:    12px;
-        margin:   0;
-        opacity:  .5;
-        &:hover {
-          cursor:  pointer;
-          opacity: 1;
-        }
-      }
-    }
-  }
-</style>

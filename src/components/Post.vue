@@ -6,9 +6,13 @@
           {{ title }}
         </router-link>
       </h1>
+      <span
+        v-on:click="removePost(id)"
+        class="icon times remove"
+      ></span>
     </header>
     <div v-html="content" class="body">
-      {{ content }}
+      {{ content | truncate(255) }}
     </div>
     <footer>
       <ul>
@@ -22,7 +26,20 @@
 <script>
   export default {
     name: 'post',
-    props: ['id', 'title', 'content', 'author', 'comments']
+    props: ['id', 'title', 'content', 'author', 'comments'],
+    filters: {
+      truncate(value, limit) {
+        if (value.length > limit) {
+          value = value.substring(0, limit - 3) + '...';
+        }
+        return value
+      }
+    },
+    methods: {
+      removePost(payload) {
+        this.$store.dispatch('REMOVE_POST', payload)
+      }
+    }
   }
 </script>
 
@@ -34,11 +51,23 @@
       border-right: 1px #ddd solid;
     }
     header {
+      position: relative;
       border-top: 1px #ddd solid;
       h1 {
         margin:      0;
         font-size:   20px;
         line-height: 125%;
+      }
+      .remove {
+        position: absolute;
+        top:      12px;
+        right:    12px;
+        margin:   0;
+        opacity:  .5;
+        &:hover {
+          cursor:  pointer;
+          opacity: 1;
+        }
       }
     }
     footer {
