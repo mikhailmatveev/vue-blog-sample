@@ -70,7 +70,7 @@
     },
     computed: {
       isValid() {
-        return this.title && this.content && this.author
+        return this.post.title && this.post.content && this.post.author
       }
     },
     methods: {
